@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= userInformation.name %></title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./app.js" defer></script>
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <div class="profile-carousel">
+            <button class="carousel-btn left">&#10094;</button>
+            <div class="carousel-images">
+                <img src="./images/Portrait_Placeholder.png" class="carousel-image active" alt="Profile 1">
+                <img src="./images/Portrait_Placeholder2.png" class="carousel-image" alt="Profile 2">
+                <img src="./images/Portrait_Placeholder3.png" class="carousel-image" alt="Profile 3">
+            </div>
+            <button class="carousel-btn right">&#10095;</button>
+        </div>
+
+        <h1><%= userInformation.name %></h1>
+        <p class="job-title"><%= userInformation.jobTitle %></p>
+    </header>
+
+    <section id="contact">
+        <h2>Contact Information</h2>
+        <ul>
+            <li><strong>Email:</strong> <a href="mailto:<%= userInformation.email %>"><%= userInformation.email %></a></li>
+            <li><strong>Phone:</strong> <%= userInformation.phone %></li>
+            <li><strong>Location:</strong> <%= userInformation.location %></li>
+            <li><strong>LinkedIn:</strong> <a href="<%= userInformation.linkedin.url %>" target="_blank"><%= userInformation.linkedin.label %></a></li>
+        </ul>
+    </section>
+
+    <section id="education">
+        <h2>Education</h2>
+        <div class="entry">
+            <h3><%= userInformation.education.title %></h3>
+            <p class="institution"><%= userInformation.education.institution %></p>
+            <p class="dates"><%= userInformation.education.dates %></p>
+        </div>
+    </section>
+
+    <section id="work">
+        <h2>Work History</h2>
+        <div class="entry">
+            <h3><%= userInformation.work.title %></h3>
+            <p class="institution"><%= userInformation.work.institution %></p>
+            <p class="dates"><%= userInformation.work.dates %></p>
+            <ul>
+                <% userInformation.work.details.forEach(function(detail) { %>
+                    <li><%= detail %></li>
+                <% }); %>
+            </ul>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <ul>
+            <% userInformation.skills.forEach(function(skill) { %>
+                <li><%= skill %></li>
+            <% }); %>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 <%= userInformation.name %>. All rights reserved.</p>
+    </footer>
+
+</div>
+</body>
+</html>
